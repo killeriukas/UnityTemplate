@@ -1,3 +1,6 @@
 [submodule "Assets/Library/unitygameframework"]
 	path = Assets/Library/unitygameframework
 	url = https://bitbucket.org/killeriukas/unitygameframework.git
+[submodule "Assets/Library/unityminigameframework"]
+	path = Assets/Library/unityminigameframework
+	url = https://bitbucket.org/killeriukas/unityminigameframework.git
