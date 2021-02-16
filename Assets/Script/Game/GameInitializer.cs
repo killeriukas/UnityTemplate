@@ -8,9 +8,7 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
 
     protected override ISceneGroup CreateUIScenesCache() {
         ISceneGroup sceneGroup = SceneGroup.Create();
-        
         sceneGroup.Add("ui_scene_game");
-
         return sceneGroup;
     }
 
@@ -23,10 +21,6 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
 
     protected override void OnUIScenesCached() {
         gameManager.Initialize();
-
-        //LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>(false);
-        //loadingScreen.Hide();
-
     }
 
     protected override void OnDestroy() {

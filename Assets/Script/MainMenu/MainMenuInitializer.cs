@@ -4,24 +4,10 @@ using TMI.UI;
 
 public class MainMenuInitializer : BaseCacheUIMiniInitializer {
 
-  //  private MetagameManager metagameManager;
-
-   // private IAssetManager assetManager;
-
     protected override ISceneGroup CreateUIScenesCache() {
-        ISceneGroup sceneGroup = SceneGroup.Create();
-        
+        ISceneGroup sceneGroup = SceneGroup.Create();       
         sceneGroup.Add("ui_scene_main_menu");
-
         return sceneGroup;
-    }
-
-    protected override void RegisterManagers(IAcquirer acquirer) {
-        base.RegisterManagers(acquirer);
-
-   //     assetManager = acquirer.AcquireManager<AssetManager, IAssetManager>();
-
-       // metagameManager = acquirer.AcquireManager<MetagameManager>();
     }
 
     protected override void OnUIScenesCached() {

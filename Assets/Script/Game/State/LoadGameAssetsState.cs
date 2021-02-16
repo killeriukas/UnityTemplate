@@ -4,29 +4,37 @@ using TMI.LogManagement;
 using TMI.Operation;
 using TMI.State;
 using TMI.TimeManagement;
+using TMI.UI;
 using UnityEngine;
 
 public class LoadGameAssetsState : BaseState {
 
 	private readonly IAssetManager assetManager;
+	private readonly IUIManager uiManager;
 
 	public LoadGameAssetsState(IInitializer initializer) : base(initializer) {
 		this.assetManager = initializer.GetManager<IAssetManager>();
+		this.uiManager = initializer.GetManager<IUIManager>();
 	}
 
 	public override void Enter() {
 		base.Enter();
 
-		//Logging.Log(this, "Asset started loading: " + MonotonicTime.now);
-		Debug.LogError("Asset started loading: " + MonotonicTime.now);
-
 		IAsyncOperation<Object> asyncOperation = DefaultAsyncOperation<Object>.Create(OnAssetsLoaded);
-		assetManager.LoadFakeAsset(System.TimeSpan.FromSeconds(1), asyncOperation);
+		IHandle handle = assetManager.LoadFakeAsset(System.TimeSpan.FromSeconds(5), asyncOperation);
+
+		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>();
+		loadingScreenUIController.Setup(handle);
 	}
 
 	private void OnAssetsLoaded(Object asset) {
-		//Logging.Log(this, "Asset loaded: " + MonotonicTime.now);
-		Debug.LogError("Asset loaded: " + MonotonicTime.now);
+		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>(false);
+		loadingScreenUIController.Hide();
+
+		GameUIController gameUIController = uiManager.LoadUI<GameUIController>();
+		gameUIController.Show();
+
+		//go to the next state
 	}
 
 }
