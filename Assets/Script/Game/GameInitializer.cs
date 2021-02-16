@@ -1,15 +1,15 @@
 ﻿using TMI.Core;
 using TMI.AssetManagement;
-using TMI.UI;
 
 public class GameInitializer : BaseCacheUIMiniInitializer {
 
+    private IAssetManager assetManager;
     private GameManager gameManager;
 
     protected override ISceneGroup CreateUIScenesCache() {
         ISceneGroup sceneGroup = SceneGroup.Create();
         
-        //sceneGroup.Add("ui_scene_main_menu");
+        sceneGroup.Add("ui_scene_game");
 
         return sceneGroup;
     }
@@ -18,10 +18,7 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
         base.RegisterManagers(acquirer);
 
         gameManager = acquirer.AcquireManager<GameManager>();
-
-   //     assetManager = acquirer.AcquireManager<AssetManager, IAssetManager>();
-
-       // metagameManager = acquirer.AcquireManager<MetagameManager>();
+        assetManager = acquirer.AcquireManager<AssetManager, IAssetManager>();
     }
 
     protected override void OnUIScenesCached() {
@@ -30,12 +27,10 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
         //LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>(false);
         //loadingScreen.Hide();
 
-        //MainMenuUIController mainMenuUIController = uiManager.LoadUI<MainMenuUIController>();
-        //mainMenuUIController.Show();
     }
 
     protected override void OnDestroy() {
-      //  uiManager.UnloadUIScene("ui_scene_main_menu");
+        uiManager.UnloadUIScene("ui_scene_game");
         base.OnDestroy();
     }
 
