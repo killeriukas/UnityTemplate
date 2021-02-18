@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMI.Core;
 using UnityEngine;
 
@@ -33,4 +30,16 @@ public class PaddleBehaviour : UnityBehaviour, IUpdatable {
 	public void Initialize() {
 		executionManager.Register(this, OnUpdate);
 	}
+
+	private void OnCollisionEnter2D(Collision2D collision) {
+		BallBehaviour ballBehaviour = collision.gameObject.GetComponent<BallBehaviour>();
+
+		if(ballBehaviour != null) {
+			Vector3 localBallPosition = transform.InverseTransformPoint(ballBehaviour.transform.position);
+			Vector3 dir = localBallPosition.normalized;
+			ballBehaviour.PushIntoDirection(dir);
+		}
+		
+	}
+		
 }

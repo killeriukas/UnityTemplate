@@ -35,4 +35,9 @@ public class BallBehaviour : UnityBehaviour, IUpdatable {
 
 	//	executionManager.Register(this, OnUpdate);
 	}
+
+	public void PushIntoDirection(Vector2 direction) {
+		Vector2 currentDirection = rigidBody.velocity.normalized;
+		rigidBody.velocity = (currentDirection + direction * 0.2f) * 20f;
+	}
 }
