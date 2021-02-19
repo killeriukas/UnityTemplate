@@ -31,13 +31,15 @@ public class BallBehaviour : UnityBehaviour, IUpdatable {
 	//}
 
 	public void Initialize() {
-		rigidBody.velocity = Vector2.up * 20f;
+		//Vector2 randomDirection = UnityEngine.Random.insideUnitCircle.normalized;
+
+		rigidBody.velocity = Vector2.up * 30f;
 
 	//	executionManager.Register(this, OnUpdate);
 	}
 
 	public void PushIntoDirection(Vector2 direction) {
-		Vector2 currentDirection = rigidBody.velocity.normalized;
-		rigidBody.velocity = (currentDirection + direction * 0.2f) * 20f;
+	//	Vector2 currentDirection = rigidBody.velocity.normalized;
+		rigidBody.velocity = direction * 30f;
 	}
 }

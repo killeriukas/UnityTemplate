@@ -17,9 +17,9 @@ public class PaddleBehaviour : UnityBehaviour, IUpdatable {
 
 		//change this to input later
 		if(Input.GetKey(KeyCode.LeftArrow)) {
-			rigidBody.velocity = Vector2.left * 10f;
+			rigidBody.velocity = Vector2.left * 20f;
 		} else if(Input.GetKey(KeyCode.RightArrow)) {
-			rigidBody.velocity = Vector2.right * 10f;
+			rigidBody.velocity = Vector2.right * 20f;
 		} else {
 			rigidBody.velocity = Vector2.zero;
 		}
