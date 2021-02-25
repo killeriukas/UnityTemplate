@@ -17,23 +17,20 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
     [SerializeField]
     private Transform brickContainerTransform;
 
-    private IAssetManager assetManager;
     private GameManager gameManager;
 
-    protected override ISceneGroup CreateUIScenesCache() {
-        ISceneGroup sceneGroup = SceneGroup.Create();
-        sceneGroup.Add("ui_scene_game");
-        return sceneGroup;
-    }
+	protected override IAssetGroup CreateUIAssetCache() {
+        IAssetGroup assetGroup = AssetGroup.Create();
+        assetGroup.AddGameObject("prefab_ui_game");
+        return assetGroup;
+	}
 
     protected override void RegisterManagers(IAcquirer acquirer) {
         base.RegisterManagers(acquirer);
-
         gameManager = acquirer.AcquireManager<GameManager>();
-        assetManager = acquirer.AcquireManager<AssetManager, IAssetManager>();
     }
 
-    protected override void OnUIScenesCached() {
+    protected override void OnUIAssetsCached() {
         gameManager.Initialize();
 
         ballBehaviour.Setup(this);
@@ -56,7 +53,7 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
     }
 
     protected override void OnDestroy() {
-        uiManager.UnloadUIScene("ui_scene_game");
+        uiManager.UnloadUIPrefab("prefab_ui_game");
         base.OnDestroy();
     }
 

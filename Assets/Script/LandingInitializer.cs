@@ -3,7 +3,6 @@ using TMI.ConfigManagement;
 using TMI.Core;
 using TMI.Helper;
 using TMI.LogManagement;
-using TMI.Operation;
 using TMI.UI;
 using UnityEngine;
 
@@ -20,7 +19,7 @@ public class LandingInitializer : BaseCacheUIMiniInitializer {
         base.Awake();
     }
 
-    protected override void RegisterManagers(IAcquirer acquirer) {
+	protected override void RegisterManagers(IAcquirer acquirer) {
 
         //TODO: put this into the config file
 #if UNITY_EDITOR
@@ -30,18 +29,18 @@ public class LandingInitializer : BaseCacheUIMiniInitializer {
         base.RegisterManagers(acquirer);
     }
 
-    protected override ISceneGroup CreateUIScenesCache() {
-        ISceneGroup sceneGroup = SceneGroup.Create();
-        sceneGroup.Add("ui_scene_loading");
-        return sceneGroup;
+    protected override IAssetGroup CreateUIAssetCache() {
+        IAssetGroup assetGroup = AssetGroup.Create();
+        assetGroup.AddGameObject("prefab_loading_screen");
+        return assetGroup;
     }
 
-    protected override void OnUIScenesCached() {
-        LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>();
-        loadingScreen.version = "Version: " + Application.version;
-        loadingScreen.Show();
+    protected override void OnUIAssetsCached() {
+		LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>();
+		loadingScreen.version = "Version: " + Application.version;
+		loadingScreen.Show();
 
-        sceneManager.LoadScene(SceneConstant.main_menu);
-    }
+		sceneManager.LoadScene(SceneConstant.main_menu);
+	}
 
 }
