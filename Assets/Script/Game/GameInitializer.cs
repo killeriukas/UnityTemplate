@@ -21,7 +21,7 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
 
 	protected override IAssetGroup CreateUIAssetCache() {
         IAssetGroup assetGroup = AssetGroup.Create();
-        assetGroup.AddGameObject("prefab_ui_game");
+        assetGroup.AddGameObject("Game/prefab_ui_game");
         return assetGroup;
 	}
 
@@ -53,7 +53,7 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
     }
 
     protected override void OnDestroy() {
-        uiManager.UnloadUIPrefab("prefab_ui_game");
+        uiManager.UnloadUIPrefab("Game/prefab_ui_game");
         base.OnDestroy();
     }
 

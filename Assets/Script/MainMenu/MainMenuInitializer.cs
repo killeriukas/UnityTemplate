@@ -13,13 +13,13 @@ public class MainMenuInitializer : BaseCacheUIMiniInitializer {
     }
 
     protected override void OnDestroy() {
-        uiManager.UnloadUIPrefab("prefab_ui_main_menu");
+        uiManager.UnloadUIPrefab("MainMenu/prefab_ui_main_menu");
         base.OnDestroy();
     }
 
 	protected override IAssetGroup CreateUIAssetCache() {
         IAssetGroup assetGroup = AssetGroup.Create();
-        assetGroup.AddGameObject("prefab_ui_main_menu");
+        assetGroup.AddGameObject("MainMenu/prefab_ui_main_menu");
         return assetGroup;
 	}
 

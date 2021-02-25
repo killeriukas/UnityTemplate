@@ -31,7 +31,7 @@ public class LandingInitializer : BaseCacheUIMiniInitializer {
 
     protected override IAssetGroup CreateUIAssetCache() {
         IAssetGroup assetGroup = AssetGroup.Create();
-        assetGroup.AddGameObject("prefab_loading_screen");
+        assetGroup.AddGameObject("Misc/prefab_loading_screen");
         return assetGroup;
     }
 
