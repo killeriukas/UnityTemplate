@@ -21,15 +21,20 @@ public class LoadGameAssetsState : BaseState {
 		base.Enter();
 
 		IAsyncOperation<Object> asyncOperation = DefaultAsyncOperation<Object>.Create(OnAssetsLoaded);
-		IHandle handle = assetManager.LoadFakeAsset(System.TimeSpan.FromSeconds(1), asyncOperation);
+		IHandle handle = assetManager.LoadFakeAsset(System.TimeSpan.FromSeconds(10), asyncOperation);
+
+		Debug.LogError("entered assets loaded: " + Time.timeSinceLevelLoad);
 
 		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>();
 		loadingScreenUIController.Setup(handle);
+		loadingScreenUIController.Show();
 	}
 
 	private void OnAssetsLoaded(Object asset) {
 		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>(false);
 		loadingScreenUIController.Hide();
+
+		Debug.LogError("finished assets loaded: " + Time.timeSinceLevelLoad);
 
 		//GameUIController gameUIController = uiManager.LoadUI<GameUIController>();
 		//gameUIController.Show();
