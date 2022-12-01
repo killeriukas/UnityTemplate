@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf5462a628cc1744ea01f0371f8eb75e, type: 3}
+  m_Name: LoggingConfig
+  m_EditorClassIdentifier: 
+  logOutputList:
+  - {fileID: 11400000, guid: 7e8cf436e02267f459d880b097bf9fb4, type: 2}
+  logSettingsList:
+  - categoryName: BallBehaviour
+    enabled: 0
+  - categoryName: BrickBehaviour
+    enabled: 0
+  - categoryName: GameManager
+    enabled: 0
+  - categoryName: GameUIController
+    enabled: 0
+  - categoryName: LoadGameAssetsState
+    enabled: 0
+  - categoryName: MainMenuUIController
+    enabled: 0
+  - categoryName: PaddleBehaviour
+    enabled: 0
+  - categoryName: TMI.AssetManagement.AssetGroup
+    enabled: 0
+  - categoryName: TMI.AssetManagement.AssetManager
+    enabled: 0
+  - categoryName: TMI.AssetManagement.FakeLoader
+    enabled: 0
+  - categoryName: TMI.AssetManagement.SceneGroup
+    enabled: 0
+  - categoryName: TMI.ConfigManagement.FileStorageConfig
+    enabled: 0
+  - categoryName: TMI.ConfigManagement.LoggingConfig
+    enabled: 0
+  - categoryName: TMI.ConfigManagement.Unity.ConfigManager
+    enabled: 0
+  - categoryName: TMI.Core.ExecutionManager
+    enabled: 0
+  - categoryName: TMI.Core.PauseManager
+    enabled: 0
+  - categoryName: TMI.Helper.GeneralHelper
+    enabled: 0
+  - categoryName: TMI.Helper.SerializationHelper
+    enabled: 0
+  - categoryName: TMI.Notification.NotificationManager
+    enabled: 0
+  - categoryName: TMI.SceneManagement.SceneManager
+    enabled: 0
+  - categoryName: TMI.State.StateMachine
+    enabled: 0
+  - categoryName: TMI.TimerManagement.TimerManager
+    enabled: 0
+  - categoryName: TMI.UI.Extension.Cell
+    enabled: 0
+  - categoryName: TMI.UI.Extension.Grid
+    enabled: 0
+  - categoryName: TMI.UI.Extension.Horizontal
+    enabled: 0
+  - categoryName: TMI.UI.Extension.Interpolator
+    enabled: 0
+  - categoryName: TMI.UI.Extension.List
+    enabled: 0
+  - categoryName: TMI.UI.Extension.ProgressBar
+    enabled: 0
+  - categoryName: TMI.UI.Extension.ProgressBarPro
+    enabled: 0
+  - categoryName: TMI.UI.Extension.Tab
+    enabled: 0
+  - categoryName: TMI.UI.Extension.TabMenu
+    enabled: 0
+  - categoryName: TMI.UI.Extension.UIEnabler
+    enabled: 0
+  - categoryName: TMI.UI.LoadingScreenUIController
+    enabled: 0
+  - categoryName: TMI.UI.Popup.ConfirmationPopupUIController
+    enabled: 0
+  - categoryName: TMI.UI.Popup.InformationPopupUIController
+    enabled: 0
+  - categoryName: TMI.UI.Popup.TwoOptionPopupUIController
+    enabled: 0
+  - categoryName: TMI.UI.UIAnimation
+    enabled: 0
+  - categoryName: TMI.UI.UIAnimator
+    enabled: 0
+  - categoryName: TMI.UI.UIButton
+    enabled: 0
+  - categoryName: TMI.UI.UICustomToggle
+    enabled: 0
+  - categoryName: TMI.UI.UIGrid
+    enabled: 0
+  - categoryName: TMI.UI.UIImage
+    enabled: 0
+  - categoryName: TMI.UI.UIInputFieldPro
+    enabled: 0
+  - categoryName: TMI.UI.UIInterpolator
+    enabled: 0
+  - categoryName: TMI.UI.UIList
+    enabled: 0
+  - categoryName: TMI.UI.UIManager
+    enabled: 0
+  - categoryName: TMI.UI.UIParticleSystem
+    enabled: 0
+  - categoryName: TMI.UI.UIProgressBar
+    enabled: 0
+  - categoryName: TMI.UI.UIProgressBarPro
+    enabled: 0
+  - categoryName: TMI.UI.UISlider
+    enabled: 0
+  - categoryName: TMI.UI.UITab
+    enabled: 0
+  - categoryName: TMI.UI.UITabMenu
+    enabled: 0
+  - categoryName: TMI.UI.UIText
+    enabled: 0
+  - categoryName: TMI.UI.UITextPro
+    enabled: 0
+  - categoryName: TMI.UI.UIToggle
+    enabled: 0
+  - categoryName: TMI.UI.UITransform
+    enabled: 0
