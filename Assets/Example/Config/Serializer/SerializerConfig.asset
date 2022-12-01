@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07915c221a86b8a4c96eddeb422bc8fd, type: 3}
-  m_Name: DefaultConfig
+  m_Script: {fileID: 11500000, guid: 481de9701d9970d49b5f13f70e33d998, type: 3}
+  m_Name: SerializerConfig
   m_EditorClassIdentifier: 
-  configModules:
-  - {fileID: 11400000, guid: 30450c69879008f4298734b3a4395052, type: 2}
-  - {fileID: 11400000, guid: 3b18c3e86b4e040438d32a38a84da954, type: 2}
+  shouldIntendFormatting: 1
