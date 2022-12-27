@@ -1,1 +1,0 @@
-{"GameUIController":"Game\\prefab_ui_game","MainMenuUIController":"MainMenu\\prefab_ui_main_menu","TMI.UI.LoadingScreenUIController":"Misc\\prefab_loading_screen"}
