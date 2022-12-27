@@ -27,7 +27,7 @@ public class MainMenuUIController : BaseUIController {
 		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>();
 		loadingScreenUIController.Show();
 
-		sceneManager.LoadScene(SceneConstant.game);
+		sceneManager.LoadAsync(SceneConstant.game);
 	}
 
 	private void OnQuitClicked(PointerEventData data) {

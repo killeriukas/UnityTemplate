@@ -1,9 +1,7 @@
+using System;
 using TMI.AssetManagement;
 using TMI.Core;
-using TMI.LogManagement;
-using TMI.Operation;
 using TMI.State;
-using TMI.TimeManagement;
 using TMI.UI;
 using UnityEngine;
 
@@ -13,31 +11,29 @@ public class LoadGameAssetsState : BaseState {
 	private readonly IUIManager uiManager;
 
 	public LoadGameAssetsState(IInitializer initializer) : base(initializer) {
-		this.assetManager = initializer.GetManager<IAssetManager>();
-		this.uiManager = initializer.GetManager<IUIManager>();
+		this.assetManager = initializer.GetManager<AssetManager, IAssetManager>();
+		this.uiManager = initializer.GetManager<UIManager, IUIManager>();
 	}
 
 	public override void Enter() {
 		base.Enter();
 
-		IAsyncOperation<Object> asyncOperation = DefaultAsyncOperation<Object>.Create(OnAssetsLoaded);
-		IHandle handle = assetManager.LoadFakeAsset(System.TimeSpan.FromSeconds(10), asyncOperation);
 
-		Debug.LogError("entered assets loaded: " + Time.timeSinceLevelLoad);
+		FakeGroup fakeResourceGroup = new FakeGroup(TimeSpan.FromSeconds(2));
+		IRequestHandler requestHandler = RequestHandler.Create(OnAssetsLoaded);
+		IHandle handle = assetManager.LoadAsync(fakeResourceGroup, requestHandler);
 
 		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>();
 		loadingScreenUIController.Setup(handle);
 		loadingScreenUIController.Show();
 	}
 
-	private void OnAssetsLoaded(Object asset) {
+	private void OnAssetsLoaded(ILoaderComplete asset) {
 		LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>(false);
 		loadingScreenUIController.Hide();
 
-		Debug.LogError("finished assets loaded: " + Time.timeSinceLevelLoad);
-
-		//GameUIController gameUIController = uiManager.LoadUI<GameUIController>();
-		//gameUIController.Show();
+		GameUIController gameUIController = uiManager.LoadUI<GameUIController>();
+		gameUIController.Show();
 
 		//go to the next state
 	}

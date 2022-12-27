@@ -3,7 +3,7 @@ using TMI.AssetManagement;
 using UnityEngine;
 using TMI.Helper;
 
-public class GameInitializer : BaseCacheUIMiniInitializer {
+public class GameInitializer : TMI.Core.Unity.BaseInitializer {
 
     [SerializeField]
     private PaddleBehaviour paddleBehaviour;
@@ -17,17 +17,17 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
     [SerializeField]
     private Transform brickContainerTransform;
 
-    private GameManager gameManager;
+    private IGameManager gameManager;
 
-	protected override IAssetGroup CreateUIAssetCache() {
-        IAssetGroup assetGroup = AssetGroup.Create();
-        assetGroup.AddGameObject("Game/prefab_ui_game");
+	protected override IGroup CreateUIAssetCacheGroup() {
+        UIConfigGroup assetGroup = new UIConfigGroup();
+        assetGroup.Add("game_screen");
         return assetGroup;
 	}
 
     protected override void RegisterManagers(IAcquirer acquirer) {
         base.RegisterManagers(acquirer);
-        gameManager = acquirer.AcquireManager<GameManager>();
+        gameManager = acquirer.AcquireManager<GameManager, IGameManager>();
     }
 
     protected override void OnUIAssetsCached() {
@@ -53,7 +53,8 @@ public class GameInitializer : BaseCacheUIMiniInitializer {
     }
 
     protected override void OnDestroy() {
-        uiManager.UnloadUIPrefab("Game/prefab_ui_game");
+   //     Debug.Log("OnDestroy being called on Play STOP");
+        uiManager.UnloadUIPrefab("game_screen");
         base.OnDestroy();
     }
 

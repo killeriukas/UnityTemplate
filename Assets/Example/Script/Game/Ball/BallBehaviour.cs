@@ -9,13 +9,6 @@ public class BallBehaviour : UnityBehaviour, IUpdatable {
 	[SerializeField]
 	private Rigidbody2D rigidBody;
 
-	private IExecutionManager executionManager;
-
-	public override void Setup(IInitializer initializer) {
-		base.Setup(initializer);
-		this.executionManager = initializer.GetManager<IExecutionManager>();
-	}
-
 	//private ExecutionManager.Result OnUpdate() {
 
 	//	//change this to input later

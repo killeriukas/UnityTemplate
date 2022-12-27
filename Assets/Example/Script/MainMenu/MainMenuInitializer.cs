@@ -2,7 +2,7 @@
 using TMI.AssetManagement;
 using TMI.UI;
 
-public class MainMenuInitializer : BaseCacheUIMiniInitializer {
+public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
 
     protected override void OnUIAssetsCached() {
         LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>(false);
@@ -13,13 +13,13 @@ public class MainMenuInitializer : BaseCacheUIMiniInitializer {
     }
 
     protected override void OnDestroy() {
-        uiManager.UnloadUIPrefab("MainMenu/prefab_ui_main_menu");
+        uiManager.UnloadUIPrefab("main_menu_screen");
         base.OnDestroy();
     }
 
-	protected override IAssetGroup CreateUIAssetCache() {
-        IAssetGroup assetGroup = AssetGroup.Create();
-        assetGroup.AddGameObject("MainMenu/prefab_ui_main_menu");
+	protected override IGroup CreateUIAssetCacheGroup() {
+        UIConfigGroup assetGroup = new UIConfigGroup();
+        assetGroup.Add("main_menu_screen");
         return assetGroup;
 	}
 

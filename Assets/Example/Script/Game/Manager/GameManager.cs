@@ -2,7 +2,7 @@ using TMI.Core;
 using TMI.Helper;
 using TMI.State;
 
-public class GameManager : BaseNotificationManager {
+public class GameManager : BaseNotificationManager, IGameManager {
 
 	private IStateMachine stateMachine;
 
