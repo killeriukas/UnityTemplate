@@ -52,10 +52,9 @@ public class GameInitializer : TMI.Core.Unity.BaseInitializer {
 
     }
 
-    protected override void OnDestroy() {
-   //     Debug.Log("OnDestroy being called on Play STOP");
+    public override void Shutdown() {
         uiManager.UnloadUIPrefab("game_screen");
-        base.OnDestroy();
+        base.Shutdown();
     }
 
 }

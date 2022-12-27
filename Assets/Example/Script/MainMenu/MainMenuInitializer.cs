@@ -1,5 +1,4 @@
-﻿using TMI.Core;
-using TMI.AssetManagement;
+﻿using TMI.AssetManagement;
 using TMI.UI;
 
 public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
@@ -12,12 +11,12 @@ public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
         mainMenuUIController.Show();
     }
 
-    protected override void OnDestroy() {
+    public override void Shutdown() {
         uiManager.UnloadUIPrefab("main_menu_screen");
-        base.OnDestroy();
+        base.Shutdown();
     }
 
-	protected override IGroup CreateUIAssetCacheGroup() {
+    protected override IGroup CreateUIAssetCacheGroup() {
         UIConfigGroup assetGroup = new UIConfigGroup();
         assetGroup.Add("main_menu_screen");
         return assetGroup;
