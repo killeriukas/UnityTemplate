@@ -29,17 +29,9 @@ MonoBehaviour:
     enabled: 0
   - categoryName: PaddleBehaviour
     enabled: 0
-  - categoryName: TMI.AssetManagement.AssetGroup
-    enabled: 0
   - categoryName: TMI.AssetManagement.AssetManager
     enabled: 0
-  - categoryName: TMI.AssetManagement.FakeLoader
-    enabled: 0
-  - categoryName: TMI.AssetManagement.SceneGroup
-    enabled: 0
-  - categoryName: TMI.ConfigManagement.FileStorageConfig
-    enabled: 0
-  - categoryName: TMI.ConfigManagement.LoggingConfig
+  - categoryName: TMI.AssetManagement.UIConfigGroup
     enabled: 0
   - categoryName: TMI.ConfigManagement.Unity.ConfigManager
     enabled: 0
@@ -50,6 +42,8 @@ MonoBehaviour:
   - categoryName: TMI.Helper.GeneralHelper
     enabled: 0
   - categoryName: TMI.Helper.SerializationHelper
+    enabled: 0
+  - categoryName: TMI.LogManagement.Logging
     enabled: 0
   - categoryName: TMI.Notification.NotificationManager
     enabled: 0
@@ -65,8 +59,6 @@ MonoBehaviour:
     enabled: 0
   - categoryName: TMI.UI.Extension.Horizontal
     enabled: 0
-  - categoryName: TMI.UI.Extension.Interpolator
-    enabled: 0
   - categoryName: TMI.UI.Extension.List
     enabled: 0
   - categoryName: TMI.UI.Extension.ProgressBar
@@ -77,15 +69,7 @@ MonoBehaviour:
     enabled: 0
   - categoryName: TMI.UI.Extension.TabMenu
     enabled: 0
-  - categoryName: TMI.UI.Extension.UIEnabler
-    enabled: 0
   - categoryName: TMI.UI.LoadingScreenUIController
-    enabled: 0
-  - categoryName: TMI.UI.Popup.ConfirmationPopupUIController
-    enabled: 0
-  - categoryName: TMI.UI.Popup.InformationPopupUIController
-    enabled: 0
-  - categoryName: TMI.UI.Popup.TwoOptionPopupUIController
     enabled: 0
   - categoryName: TMI.UI.UIAnimation
     enabled: 0
@@ -100,8 +84,6 @@ MonoBehaviour:
   - categoryName: TMI.UI.UIImage
     enabled: 0
   - categoryName: TMI.UI.UIInputFieldPro
-    enabled: 0
-  - categoryName: TMI.UI.UIInterpolator
     enabled: 0
   - categoryName: TMI.UI.UIList
     enabled: 0
@@ -124,6 +106,8 @@ MonoBehaviour:
   - categoryName: TMI.UI.UITextPro
     enabled: 0
   - categoryName: TMI.UI.UIToggle
+    enabled: 0
+  - categoryName: TMI.UI.UIToolkit.LoadingScreenUIController
     enabled: 0
   - categoryName: TMI.UI.UITransform
     enabled: 0

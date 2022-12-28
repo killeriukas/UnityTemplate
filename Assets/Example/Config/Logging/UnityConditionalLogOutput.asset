@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7d43b2af4a3ce4dbc4c23ca2bc71cf, type: 3}
   m_Name: UnityConditionalLogOutput
   m_EditorClassIdentifier: 
-  loggingConfig: {fileID: 11400000, guid: 30450c69879008f4298734b3a4395052, type: 2}
+  loggingConfig: {fileID: 11400000, guid: 9a1ec76f97d1d3e428929ff6c99c108f, type: 2}

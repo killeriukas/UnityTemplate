@@ -1,4 +1,6 @@
 ﻿using TMI.AssetManagement;
+using TMI.ConfigManagement.Unity;
+using TMI.ConfigManagement.Unity.UI;
 using TMI.UI;
 
 public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
@@ -17,7 +19,7 @@ public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
     }
 
     protected override IGroup CreateUIAssetCacheGroup() {
-        UIConfigGroup assetGroup = new UIConfigGroup();
+        UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
         assetGroup.Add("main_menu_screen");
         return assetGroup;
 	}

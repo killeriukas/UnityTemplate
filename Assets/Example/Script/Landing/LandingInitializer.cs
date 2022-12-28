@@ -1,4 +1,6 @@
 ﻿using TMI.AssetManagement;
+using TMI.ConfigManagement.Unity;
+using TMI.ConfigManagement.Unity.UI;
 using TMI.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -9,7 +11,7 @@ public class LandingInitializer : TMI.Core.Unity.BaseInitializer {
 	private UIDocument uiDocument;
 	
     protected override IGroup CreateUIAssetCacheGroup() {
-	    UIConfigGroup assetGroup = new UIConfigGroup();
+	    UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
 	    assetGroup.Add("loading_screen");
         return assetGroup;
     }

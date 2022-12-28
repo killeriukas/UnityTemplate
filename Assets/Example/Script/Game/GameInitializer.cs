@@ -1,5 +1,7 @@
 ﻿using TMI.Core;
 using TMI.AssetManagement;
+using TMI.ConfigManagement.Unity;
+using TMI.ConfigManagement.Unity.UI;
 using UnityEngine;
 using TMI.Helper;
 
@@ -20,7 +22,7 @@ public class GameInitializer : TMI.Core.Unity.BaseInitializer {
     private IGameManager gameManager;
 
 	protected override IGroup CreateUIAssetCacheGroup() {
-        UIConfigGroup assetGroup = new UIConfigGroup();
+        UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
         assetGroup.Add("game_screen");
         return assetGroup;
 	}
