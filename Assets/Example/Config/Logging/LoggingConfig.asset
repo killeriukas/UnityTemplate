@@ -13,27 +13,13 @@ MonoBehaviour:
   m_Name: LoggingConfig
   m_EditorClassIdentifier: 
   logOutputList:
-  - {fileID: 11400000, guid: 7e8cf436e02267f459d880b097bf9fb4, type: 2}
+  - {fileID: 11400000, guid: f4368ceb334c8124c92389c422c6dae0, type: 2}
   logSettingsList:
-  - categoryName: BallBehaviour
-    enabled: 0
-  - categoryName: BrickBehaviour
-    enabled: 0
-  - categoryName: GameManager
-    enabled: 0
-  - categoryName: GameUIController
-    enabled: 0
-  - categoryName: LoadGameAssetsState
-    enabled: 0
-  - categoryName: MainMenuUIController
-    enabled: 0
-  - categoryName: PaddleBehaviour
-    enabled: 0
-  - categoryName: TMI.AssetManagement.AssetManager
-    enabled: 0
   - categoryName: TMI.AssetManagement.UIConfigGroup
     enabled: 0
   - categoryName: TMI.ConfigManagement.Unity.ConfigManager
+    enabled: 0
+  - categoryName: TMI.ConfigManagement.Unity.UI.BaseUIConfig`1
     enabled: 0
   - categoryName: TMI.Core.ExecutionManager
     enabled: 0
@@ -47,67 +33,13 @@ MonoBehaviour:
     enabled: 0
   - categoryName: TMI.Notification.NotificationManager
     enabled: 0
-  - categoryName: TMI.SceneManagement.SceneManager
-    enabled: 0
   - categoryName: TMI.State.StateMachine
     enabled: 0
-  - categoryName: TMI.TimerManagement.TimerManager
+  - categoryName: TMI.UI.BaseUIController
     enabled: 0
-  - categoryName: TMI.UI.Extension.Cell
-    enabled: 0
-  - categoryName: TMI.UI.Extension.Grid
-    enabled: 0
-  - categoryName: TMI.UI.Extension.Horizontal
-    enabled: 0
-  - categoryName: TMI.UI.Extension.List
-    enabled: 0
-  - categoryName: TMI.UI.Extension.ProgressBar
-    enabled: 0
-  - categoryName: TMI.UI.Extension.ProgressBarPro
-    enabled: 0
-  - categoryName: TMI.UI.Extension.Tab
-    enabled: 0
-  - categoryName: TMI.UI.Extension.TabMenu
-    enabled: 0
-  - categoryName: TMI.UI.LoadingScreenUIController
-    enabled: 0
-  - categoryName: TMI.UI.UIAnimation
-    enabled: 0
-  - categoryName: TMI.UI.UIAnimator
-    enabled: 0
-  - categoryName: TMI.UI.UIButton
-    enabled: 0
-  - categoryName: TMI.UI.UICustomToggle
-    enabled: 0
-  - categoryName: TMI.UI.UIGrid
-    enabled: 0
-  - categoryName: TMI.UI.UIImage
-    enabled: 0
-  - categoryName: TMI.UI.UIInputFieldPro
-    enabled: 0
-  - categoryName: TMI.UI.UIList
+  - categoryName: TMI.UI.UIComponent
     enabled: 0
   - categoryName: TMI.UI.UIManager
     enabled: 0
-  - categoryName: TMI.UI.UIParticleSystem
-    enabled: 0
-  - categoryName: TMI.UI.UIProgressBar
-    enabled: 0
-  - categoryName: TMI.UI.UIProgressBarPro
-    enabled: 0
-  - categoryName: TMI.UI.UISlider
-    enabled: 0
-  - categoryName: TMI.UI.UITab
-    enabled: 0
-  - categoryName: TMI.UI.UITabMenu
-    enabled: 0
-  - categoryName: TMI.UI.UIText
-    enabled: 0
-  - categoryName: TMI.UI.UITextPro
-    enabled: 0
-  - categoryName: TMI.UI.UIToggle
-    enabled: 0
-  - categoryName: TMI.UI.UIToolkit.LoadingScreenUIController
-    enabled: 0
-  - categoryName: TMI.UI.UITransform
+  - categoryName: TMI.UI.UIToolkit.UIManager
     enabled: 0
