@@ -1,10 +1,15 @@
 using System;
 using TMI.Core;
+using TMI.SceneManagement;
+using TMI.UI;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UIController = TMI.UI.UIToolkit.UIController;
+using UIManager = TMI.UI.UIToolkit.UIManager;
 
-namespace TMI.Temporary {
-	public class MainMenuUIController : MonoBehaviour {
+namespace Example.UI.UIToolkit {
+	
+	public class MainMenuUIController : UIController {
 
 		private class OptionScreenController : IDisposable {
 
@@ -48,8 +53,15 @@ namespace TMI.Temporary {
 		private Button startButton;
 		private Button optionButton;
 		private Button quitButton;
+
+		private IUIManager uiManager;
+		private ISceneManager sceneManager;
 		
-		public void Setup(VisualElement rootVisualElement) {
+		public override void Setup(IInitializer initializer) {
+			base.Setup(initializer);
+			uiManager = initializer.GetManager<UIManager, IUIManager>();
+			sceneManager = initializer.GetManager<ISceneManager>();
+			
 			startButton = rootVisualElement.Q<Button>(mainMenuScreenData.startButtonId);
 			optionButton = rootVisualElement.Q<Button>(mainMenuScreenData.optionButtonId);
 			quitButton = rootVisualElement.Q<Button>(mainMenuScreenData.quitButtonId);
@@ -61,8 +73,12 @@ namespace TMI.Temporary {
 			optionButton.clicked += OnOptionButtonClicked;
 			quitButton.clicked += OnQuitButtonClicked;
 		}
+
 		private void OnStartButtonClicked() {
-			Debug.Log("OnStartButtonClicked() Clicked");
+			LoadingScreenUIController loadingScreenUIController = uiManager.Load<LoadingScreenUIController>();
+			loadingScreenUIController.Show();
+
+			sceneManager.LoadAsync(SceneConstant.game);
 		}
 
 		private void OnOptionButtonClicked() {
@@ -70,50 +86,18 @@ namespace TMI.Temporary {
 		}
 
 		private void OnQuitButtonClicked() {
-			Debug.Log("OnQuitButtonClicked() Clicked");
-			//Application.Quit();
+			Application.Quit();
 		}
 
-		private void OnDestroy() {
+		protected override void OnDestroy() {
 			optionScreenController.Dispose();
 			
 			startButton.clicked -= OnStartButtonClicked;
 			quitButton.clicked -= OnQuitButtonClicked;
 			optionButton.clicked -= OnOptionButtonClicked;
+			base.OnDestroy();
 		}
 		
-		
-		// [SerializeField]
-		// private UIButton quitButton;
-		//
-		// [SerializeField]
-		// private UIButton startButton;
-		//
-		// private ISceneManager sceneManager;
-		//
-		// public override void Setup(IInitializer initializer) {
-		// 	base.Setup(initializer);
-		// 	sceneManager = initializer.GetManager<ISceneManager>();
-		//
-		// 	quitButton.onButtonClick += OnQuitClicked;
-		// 	startButton.onButtonClick += OnStartClicked;
-		// }
-		//
-		// private void OnStartClicked(PointerEventData data) {
-		// 	LoadingScreenUIController loadingScreenUIController = uiManager.LoadUI<LoadingScreenUIController>();
-		// 	loadingScreenUIController.Show();
-		//
-		// 	sceneManager.LoadScene(SceneConstant.game);
-		// }
-		//
-		// private void OnQuitClicked(PointerEventData data) {
-		// 	Application.Quit();
-		// }
-		//
-		// protected override void OnDestroy() {
-		// 	quitButton.onButtonClick -= OnQuitClicked;
-		// 	base.OnDestroy();
-		// }
 	}
 	
 }
