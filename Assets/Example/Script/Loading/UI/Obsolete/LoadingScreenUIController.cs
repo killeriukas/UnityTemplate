@@ -1,10 +1,11 @@
 ﻿using TMI.AssetManagement;
 using TMI.Core;
+using TMI.UI;
 using UnityEngine;
 
-namespace TMI.UI {
+namespace Example.UI {
 
-    public class LoadingScreenUIController : BaseUIController, IUpdatable {
+    public class LoadingScreenUIController : UIController, IUpdatable {
 
         [SerializeField]
         private UITextPro loadingText;
