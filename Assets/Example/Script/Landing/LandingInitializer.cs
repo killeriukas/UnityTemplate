@@ -1,27 +1,21 @@
-﻿using TMI.AssetManagement;
-using TMI.ConfigManagement.Unity;
+﻿using Example.UI.UIToolkit;
+using TMI.AssetManagement;
 using TMI.ConfigManagement.Unity.UI;
-using TMI.UI;
+using TMI.Core.Unity;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class LandingInitializer : TMI.Core.Unity.BaseInitializer {
-
-	[SerializeField]
-	private UIDocument uiDocument;
+public class LandingInitializer : Initializer {
 	
     protected override IGroup CreateUIAssetCacheGroup() {
-	    UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
+	    IUIConfig uiConfig = uiManagerDefault.GetConfig();
+	    
+	    UIConfigGroup assetGroup = new UIConfigGroup(uiConfig);
 	    assetGroup.Add("loading_screen");
         return assetGroup;
     }
 
     protected override void OnUIAssetsCached() {
-
-	 //   TMI.Temporary.MainMenuUIController mainMenu = uiDocument.GetComponent<TMI.Temporary.MainMenuUIController>();
-	//	mainMenu.Setup(uiDocument.rootVisualElement);
-	    
-	    LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>();
+	    LoadingScreenUIController loadingScreen = uiManagerDefault.Load<LoadingScreenUIController>();
 	    loadingScreen.version = "Version: " + Application.version;
 	    loadingScreen.Show();
 	    

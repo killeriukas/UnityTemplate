@@ -1,11 +1,11 @@
 ﻿using TMI.Core;
 using TMI.AssetManagement;
-using TMI.ConfigManagement.Unity;
 using TMI.ConfigManagement.Unity.UI;
+using TMI.Core.Unity;
 using UnityEngine;
 using TMI.Helper;
 
-public class GameInitializer : TMI.Core.Unity.BaseInitializer {
+public class GameInitializer : Initializer {
 
     [SerializeField]
     private PaddleBehaviour paddleBehaviour;
@@ -22,8 +22,10 @@ public class GameInitializer : TMI.Core.Unity.BaseInitializer {
     private IGameManager gameManager;
 
 	protected override IGroup CreateUIAssetCacheGroup() {
-        UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
-        assetGroup.Add("game_screen");
+        IUIConfig uiConfig = uiManagerDefault.GetConfig();
+        
+        UIConfigGroup assetGroup = new UIConfigGroup(uiConfig);
+    //    assetGroup.Add("game_screen");
         return assetGroup;
 	}
 
@@ -54,9 +56,9 @@ public class GameInitializer : TMI.Core.Unity.BaseInitializer {
 
     }
 
-    public override void Shutdown() {
-        uiManager.UnloadUIPrefab("game_screen");
-        base.Shutdown();
+    public override void OnPreDestroy() {
+     //   uiManagerDefault.Unload("game_screen");
+        base.OnPreDestroy();
     }
 
 }

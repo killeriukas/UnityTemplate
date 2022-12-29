@@ -1,25 +1,27 @@
-﻿using TMI.AssetManagement;
-using TMI.ConfigManagement.Unity;
+﻿using Example.UI.UIToolkit;
+using TMI.AssetManagement;
 using TMI.ConfigManagement.Unity.UI;
-using TMI.UI;
+using TMI.Core.Unity;
 
-public class MainMenuInitializer : TMI.Core.Unity.BaseInitializer {
+public class MainMenuInitializer : Initializer {
 
     protected override void OnUIAssetsCached() {
-        LoadingScreenUIController loadingScreen = uiManager.LoadUI<LoadingScreenUIController>(false);
+        LoadingScreenUIController loadingScreen = uiManagerDefault.Load<LoadingScreenUIController>(false);
         loadingScreen.Hide();
 
-        MainMenuUIController mainMenuUIController = uiManager.LoadUI<MainMenuUIController>();
+        MainMenuUIController mainMenuUIController = uiManagerDefault.Load<MainMenuUIController>();
         mainMenuUIController.Show();
     }
 
-    public override void Shutdown() {
-        uiManager.UnloadUIPrefab("main_menu_screen");
-        base.Shutdown();
+    public override void OnPreDestroy() {
+        uiManagerDefault.Unload("main_menu_screen");
+        base.OnPreDestroy();
     }
 
     protected override IGroup CreateUIAssetCacheGroup() {
-        UIConfigGroup assetGroup = new UIConfigGroup(ConfigManager.GetConfig<UIConfig>());
+        IUIConfig uiConfig = uiManagerDefault.GetConfig();
+        
+        UIConfigGroup assetGroup = new UIConfigGroup(uiConfig);
         assetGroup.Add("main_menu_screen");
         return assetGroup;
 	}
