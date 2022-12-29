@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7d43b2af4a3ce4dbc4c23ca2bc71cf, type: 3}
-  m_Name: UnityConditionalLogOutput
+  m_Script: {fileID: 11500000, guid: c1c1008883e97824d83ffe6aa5a7edb6, type: 3}
+  m_Name: UnityLogOutput
   m_EditorClassIdentifier: 
-  loggingConfig: {fileID: 11400000, guid: 9a1ec76f97d1d3e428929ff6c99c108f, type: 2}
