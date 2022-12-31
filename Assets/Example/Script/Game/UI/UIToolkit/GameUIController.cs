@@ -14,6 +14,9 @@ namespace Example.UI.UIToolkit {
         [SerializeField]
         private VisualTreeAsset gameOverScreenVTA;
         
+        [SerializeField]
+        private VisualTreeAsset gameWonScreenVTA;
+        
         //game screen - start
         private VisualElement livesContainer;
         private VisualElement overlayContainer;
@@ -45,6 +48,19 @@ namespace Example.UI.UIToolkit {
         }
         //game over screen - end
         
+        //game won screen - start
+        private Button continueButton;
+        
+        public event Action onContinueClicked {
+            add {
+                continueButton.clicked += value;
+            }
+            remove {
+                continueButton.clicked -= value;
+            }
+        }
+        //game won screen - end
+        
         public override void Setup(IInitializer initializer) {
             base.Setup(initializer);
             overlayContainer = rootVisualElement.Q<VisualElement>("overlay");
@@ -69,6 +85,21 @@ namespace Example.UI.UIToolkit {
             }
 
             scoreLabel.text = "Score: " + GameController.STARTING_SCORE;
+        }
+
+        public void ShowGameWonScreen(int totalScore) {
+            gameWonScreenVTA.CloneTree(overlayContainer);
+            continueButton = overlayContainer.Q<Button>("continue-button");
+            totalScoreLabel = overlayContainer.Q<Label>("score-label");
+            
+            totalScoreLabel.text = "Current Score: " + totalScore;
+            
+            overlayContainer.style.display = DisplayStyle.Flex;
+        }
+
+        public void CloseGameWonScreen() {
+            overlayContainer.RemoveAt(0);
+            overlayContainer.style.display = DisplayStyle.None;
         }
 
         public void ShowGameOverScreen(int totalScore) {

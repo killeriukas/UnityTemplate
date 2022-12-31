@@ -15,11 +15,11 @@ public class RestartState : BaseStateWithProxy<GameplayItems> {
 
     public override void Enter() {
         base.Enter();
-
+        
         for(int i = 0; i < proxy.brickContainerTransform.childCount; i++) {
             GameObject.Destroy(proxy.brickContainerTransform.GetChild(i).gameObject);
         }
-
+        
         proxy.gameController.Dispose();
         proxy.gameController = new GameController(initializer);
         

@@ -38,11 +38,14 @@ public class BallBehaviour : BaseNotificationBehaviour, IUpdatable {
 		rigidBody.velocity = direction * SPEED;
 	}
 
-	public void Kill() {
+	public void Freeze() {
 		rigidBody.isKinematic = true;
 		rigidBody.velocity = Vector2.zero;
 		rigidBody.position = deathZoneTransform.position;
-		
+	}
+	
+	public void Kill() {
+		Freeze();
 		Trigger(new BallKilledNotification());
 	}
 }

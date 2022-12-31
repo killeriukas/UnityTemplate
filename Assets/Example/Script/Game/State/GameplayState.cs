@@ -14,7 +14,13 @@ public class GameplayState : BaseStateWithProxy<GameplayItems> {
         Listen<BrickDestroyedNotification>(this, OnBrickDestroyed);
     }
     private void OnBrickDestroyed(BrickDestroyedNotification notification) {
-        proxy.gameController.IncreaseScore();
+        proxy.gameController.RemoveBrick();
+
+        if(!proxy.gameController.anyBricksLeft) {
+            proxy.ballBehaviour.Freeze();
+            proxy.paddleBehaviour.DisableInput();
+            nextState = new GameWonState(initializer, proxy);
+        }
     }
     
     private void OnBallKilled(BallKilledNotification notification) {

@@ -63,3 +63,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifeItemVTA: {fileID: 9197481963319205126, guid: f00de832166861544b3f69c7498e61da, type: 3}
   gameOverScreenVTA: {fileID: 9197481963319205126, guid: 360e5ce8dee6b3a47822a4453e707835, type: 3}
+  gameWonScreenVTA: {fileID: 9197481963319205126, guid: 18a3da31fdf12dd40b7340a526ea7ac0, type: 3}
