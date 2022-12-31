@@ -17,7 +17,7 @@ public class PaddleBehaviour : UnityBehaviour, IUpdatable {
 
 	public override void Setup(IInitializer initializer) {
 		base.Setup(initializer);
-		this.executionManager = initializer.GetManager<IExecutionManager>();
+		this.executionManager = initializer.GetManager<ExecutionManager, IExecutionManager>();
 	}
 
 	private ExecutionManager.Result OnUpdate() {

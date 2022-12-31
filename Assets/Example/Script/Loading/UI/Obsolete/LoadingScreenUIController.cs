@@ -47,7 +47,7 @@ namespace Example.UI {
 
 		public override void Setup(IInitializer initializer) {
 			base.Setup(initializer);
-            this.executionManager = initializer.GetManager<IExecutionManager>();
+            this.executionManager = initializer.GetManager<ExecutionManager, IExecutionManager>();
 		}
 
 		public void Setup(IHandle handle) {

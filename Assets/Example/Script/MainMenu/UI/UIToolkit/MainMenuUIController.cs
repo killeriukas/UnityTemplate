@@ -60,7 +60,7 @@ namespace Example.UI.UIToolkit {
 		public override void Setup(IInitializer initializer) {
 			base.Setup(initializer);
 			uiManager = initializer.GetManager<UIManager, IUIManager>();
-			sceneManager = initializer.GetManager<ISceneManager>();
+			sceneManager = initializer.GetManager<SceneManager, ISceneManager>();
 			
 			startButton = rootVisualElement.Q<Button>(mainMenuScreenData.startButtonId);
 			optionButton = rootVisualElement.Q<Button>(mainMenuScreenData.optionButtonId);

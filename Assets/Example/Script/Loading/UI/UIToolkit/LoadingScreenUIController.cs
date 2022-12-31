@@ -52,7 +52,7 @@ namespace Example.UI.UIToolkit {
 
         public override void Setup(IInitializer initializer) {
             base.Setup(initializer);
-            this.executionManager = initializer.GetManager<IExecutionManager>();
+            this.executionManager = initializer.GetManager<ExecutionManager, IExecutionManager>();
             versionText = rootVisualElement.Q<Label>("version");
         }
 

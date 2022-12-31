@@ -17,7 +17,7 @@ namespace Example.UI {
 
 		public override void Setup(IInitializer initializer) {
 			base.Setup(initializer);
-			sceneManager = initializer.GetManager<ISceneManager>();
+			sceneManager = initializer.GetManager<SceneManager, ISceneManager>();
 
 			quitButton.onButtonClick += OnQuitClicked;
 			startButton.onButtonClick += OnStartClicked;
