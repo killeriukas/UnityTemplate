@@ -18,4 +18,6 @@ MonoBehaviour:
   localUIAssetMap:
   - label: main_menu_screen
     uiPrefab: {fileID: 3864917051367695819, guid: 88699fcd87481fc4da1766021974d183, type: 3}
+  - label: game_screen
+    uiPrefab: {fileID: 6238678443979384466, guid: 03c331b3292d31f46bba8eb16dffe339, type: 3}
   _panelSettings: {fileID: 11400000, guid: 7645ed8faf0d1c3439a6548d76c4bf48, type: 2}
