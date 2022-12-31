@@ -1,10 +1,23 @@
-using TMI.Core;
+using TMI.Notification;
 using UnityEngine;
 
-public class BrickBehaviour : UnityBehaviour {
+public class BrickBehaviour : BaseNotificationBehaviour {
 
+	//you can spawn whatever you want on the hit if necessary
+
+	private bool isDestroyed = false;
+	
 	private void OnCollisionEnter2D(Collision2D collision) {
-//		Debug.LogError("On collided!!!");
+
+		//ignore the double collision
+		if(isDestroyed) {
+			return;
+		}
+
+		isDestroyed = true;
+		
+		Trigger(new BrickDestroyedNotification());
+		
 		Destroy(gameObject);
 	}
 

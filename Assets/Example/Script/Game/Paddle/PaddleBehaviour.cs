@@ -6,7 +6,14 @@ public class PaddleBehaviour : UnityBehaviour, IUpdatable {
 	[SerializeField]
 	private Rigidbody2D rigidBody;
 
+	private Vector3 startingPosition;
+	
 	private IExecutionManager executionManager;
+
+	protected override void Awake() {
+		base.Awake();
+		startingPosition = transform.position;
+	}
 
 	public override void Setup(IInitializer initializer) {
 		base.Setup(initializer);
@@ -28,18 +35,29 @@ public class PaddleBehaviour : UnityBehaviour, IUpdatable {
 	}
 
 	public void Initialize() {
+		transform.position = startingPosition;
+	}
+
+	public void EnableInput() {
 		executionManager.Register(this, OnUpdate);
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision) {
-		BallBehaviour ballBehaviour = collision.gameObject.GetComponent<BallBehaviour>();
+	public void DisableInput() {
+		rigidBody.velocity = Vector2.zero;
+		executionManager.Unregister(this);
+	}
 
-		if(ballBehaviour != null) {
-			Vector3 localBallPosition = transform.InverseTransformPoint(ballBehaviour.transform.position);
-			Vector3 dir = localBallPosition.normalized;
-			ballBehaviour.PushIntoDirection(dir);
+	private void OnCollisionEnter2D(Collision2D collision) {
+		BallBehaviour ballBehaviour = collision.collider.GetComponentInParent<BallBehaviour>();
+		
+		//paddle doesn't handle anything but the ball collision
+		if(ballBehaviour == null) {
+			return;
 		}
 		
+		Vector3 localBallPosition = transform.InverseTransformPoint(ballBehaviour.transform.position);
+		Vector3 dir = localBallPosition.normalized;
+		ballBehaviour.PushIntoDirection(dir);
 	}
 		
 }
