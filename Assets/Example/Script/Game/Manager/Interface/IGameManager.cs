@@ -1,5 +1,5 @@
 using TMI.Core;
 
 public interface IGameManager : IManager {
-	void Initialize();
+	void Initialize(GameplayItems gameplayItems);
 }

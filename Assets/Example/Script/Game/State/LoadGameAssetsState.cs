@@ -1,4 +1,3 @@
-using System;
 using Example.UI.UIToolkit;
 using TMI.AssetManagement;
 using TMI.Core;
@@ -6,22 +5,21 @@ using TMI.State;
 using TMI.UI;
 using UIManager = TMI.UI.UIToolkit.UIManager;
 
-public class LoadGameAssetsState : BaseState {
+public class LoadGameAssetsState : BaseStateWithProxy<GameplayItems> {
 
-	private readonly IAssetManager assetManager;
+	//private readonly IAssetManager assetManager;
 	private readonly IUIManager uiManager;
 
-	public LoadGameAssetsState(IInitializer initializer) : base(initializer) {
-		this.assetManager = initializer.GetManager<AssetManager, IAssetManager>();
+	public LoadGameAssetsState(IInitializer initializer, GameplayItems gameplayItems) : base(initializer, gameplayItems) {
+	//	this.assetManager = initializer.GetManager<AssetManager, IAssetManager>();
 		this.uiManager = initializer.GetManager<UIManager, IUIManager>();
 	}
 
 	public override void Enter() {
 		base.Enter();
 
-		//TODO: bet this one will crash when trying to load directly from GameScene
-		LoadingScreenUIController loadingScreenUIController = uiManager.Load<LoadingScreenUIController>(false);
-		loadingScreenUIController.Hide();
+		// LoadingScreenUIController loadingScreenUIController = uiManager.Load<LoadingScreenUIController>(false);
+		// loadingScreenUIController.Hide();
 		
 
 		// FakeGroup fakeResourceGroup = new FakeGroup(TimeSpan.FromSeconds(2));
@@ -31,16 +29,19 @@ public class LoadGameAssetsState : BaseState {
 		// LoadingScreenUIController loadingScreenUIController = uiManager.Load<LoadingScreenUIController>();
 		// loadingScreenUIController.Setup(handle);
 		// loadingScreenUIController.Show();
+
+		OnAssetsLoaded(null);
 	}
 
 	private void OnAssetsLoaded(ILoaderComplete asset) {
 		LoadingScreenUIController loadingScreenUIController = uiManager.Load<LoadingScreenUIController>(false);
 		loadingScreenUIController.Hide();
 
-		// GameUIController gameUIController = uiManager.Load<GameUIController>();
-		// gameUIController.Show();
+		GameUIController gameUIController = uiManager.Load<GameUIController>();
+		gameUIController.Initialize(proxy.gameController);
+		gameUIController.Show();
 
-		//go to the next state
+		nextState = new SpawnBricksState(initializer, proxy);
 	}
 
 }

@@ -25,7 +25,7 @@ public class GameInitializer : Initializer {
         IUIConfig uiConfig = uiManagerDefault.GetConfig();
         
         UIConfigGroup assetGroup = new UIConfigGroup(uiConfig);
-    //    assetGroup.Add("game_screen");
+        assetGroup.Add("game_screen");
         return assetGroup;
 	}
 
@@ -35,29 +35,18 @@ public class GameInitializer : Initializer {
     }
 
     protected override void OnUIAssetsCached() {
-        gameManager.Initialize();
-
-        ballBehaviour.Setup(this);
-        ballBehaviour.Initialize();
-
         paddleBehaviour.Setup(this);
-        paddleBehaviour.Initialize();
-
-        //initialize loads of bricks.
-        //later move this code elsewhere
-
-        for(int i = 0; i < 10; ++i) {
-            for(int j = 0; j < 22; ++j) {
-                Vector3 position = new Vector3(j * 3, -i, 0);
-                BrickBehaviour brick = HierarchyHelper.InstantiateAndSetupBehaviour(this, brickPrefab, brickContainerTransform, false);
-                brick.transform.localPosition = position;
-            }
-        }
-
+        ballBehaviour.Setup(this);
+        
+        GameplayItems items = new GameplayItems() {
+            ballBehaviour = this.ballBehaviour, brickContainerTransform = this.brickContainerTransform, brickPrefab = this.brickPrefab, paddleBehaviour = this.paddleBehaviour
+        };
+        
+        gameManager.Initialize(items);
     }
 
     public override void OnPreDestroy() {
-     //   uiManagerDefault.Unload("game_screen");
+        uiManagerDefault.Unload("game_screen");
         base.OnPreDestroy();
     }
 

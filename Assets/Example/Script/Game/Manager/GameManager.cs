@@ -4,11 +4,15 @@ using TMI.State;
 
 public class GameManager : BaseNotificationManager, IGameManager {
 
+	private GameController gameController;
+	
 	private IStateMachine stateMachine;
 
-
-	public void Initialize() {
-		stateMachine = StateMachine.Create(new LoadGameAssetsState(initializer));
+	public void Initialize(GameplayItems gameplayItems) {
+		gameController = new GameController(initializer);
+		gameplayItems.gameController = gameController;
+		
+		stateMachine = StateMachine.Create(new LoadGameAssetsState(initializer, gameplayItems));
 		RegisterUpdate();
 	}
 
@@ -17,9 +21,11 @@ public class GameManager : BaseNotificationManager, IGameManager {
 		return ExecutionManager.Result.Continue;
 	}
 
-	protected override void OnDestroy() {
+	public override void OnPreDestroy() {
+		UnregisterUpdate();
+		GeneralHelper.DisposeAndMakeDefault(ref gameController);
 		GeneralHelper.DisposeAndMakeDefault(ref stateMachine);
-		base.OnDestroy();
+		base.OnPreDestroy();
 	}
 
 }
