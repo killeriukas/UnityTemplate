@@ -5,3 +5,7 @@
 /obj/
 *.csproj
 *.sln
+/.idea/
+/Assets/Script/.idea/
+/UIElementsSchema/
+/UserSettings/
